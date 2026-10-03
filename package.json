@@ -1,0 +1,12 @@
+{
+  "name": "ee-toolkit",
+  "version": "0.1.0",
+  "description": "Browser-based calculators for everyday electrical engineering work.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "start": "npx --yes http-server -c-1 ."
+  },
+  "license": "MIT"
+}

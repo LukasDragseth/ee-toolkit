@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EE Toolkit</title>
+  <meta name="description" content="Browser-based calculators for everyday electrical engineering work.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Cpath d=%22M2 16h6l2-6 4 12 4-12 4 12 2-6h6%22 fill=%22none%22 stroke=%22%231f6feb%22 stroke-width=%223%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>EE Toolkit</h1>
+    <p class="tagline">Quick calculators for the electronics bench.</p>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="color-code">Color code</button>
+      <button role="tab" aria-selected="false" data-tab="ohms-law">Ohm's law</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Resistor color code -------------------------------------------- -->
+    <section id="color-code" class="panel" role="tabpanel">
+      <h2>Resistor color code</h2>
+
+      <div class="row">
+        <label>Bands
+          <select id="band-count">
+            <option value="4" selected>4 bands</option>
+            <option value="5">5 bands</option>
+          </select>
+        </label>
+      </div>
+
+      <svg id="resistor" viewBox="0 0 320 80" aria-label="Resistor preview" role="img">
+        <line x1="0" y1="40" x2="320" y2="40" class="lead" />
+        <rect x="60" y="14" width="200" height="52" rx="22" class="body" />
+        <g id="band-rects"></g>
+      </svg>
+
+      <div id="band-selects" class="row"></div>
+
+      <output id="decode-result" class="result" aria-live="polite"></output>
+
+      <h3>Value to colors</h3>
+      <div class="row">
+        <label>Resistance
+          <input id="encode-input" type="text" inputmode="decimal" placeholder="e.g. 4.7k" value="4.7k">
+        </label>
+      </div>
+      <output id="encode-result" class="result" aria-live="polite"></output>
+    </section>
+
+    <!-- Ohm's law ------------------------------------------------------ -->
+    <section id="ohms-law" class="panel" role="tabpanel" hidden>
+      <h2>Ohm's law and power</h2>
+      <p class="hint">Fill in any two values. Suffixes like k, M, m and u work (10m = 0.01).</p>
+
+      <div class="grid">
+        <label>Voltage (V)<input data-ohm="V" type="text" inputmode="decimal" placeholder="volts"></label>
+        <label>Current (I)<input data-ohm="I" type="text" inputmode="decimal" placeholder="amps"></label>
+        <label>Resistance (R)<input data-ohm="R" type="text" inputmode="decimal" placeholder="ohms"></label>
+        <label>Power (P)<input data-ohm="P" type="text" inputmode="decimal" placeholder="watts"></label>
+      </div>
+
+      <div class="row">
+        <button id="ohm-clear" type="button" class="secondary">Clear</button>
+      </div>
+
+      <output id="ohm-result" class="result" aria-live="polite"></output>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://github.com/LukasDragseth/ee-toolkit">Source on GitHub</a>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
